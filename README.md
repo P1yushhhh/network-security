@@ -16,7 +16,7 @@ Each pipeline stage is designed as a modular, configurable component, following 
 - **Model Training & Selection:** Automated learn/test splits, automated model selection via a model factory, evaluation metric calculation, artifact tracking of the best model, and robust failover if requirements aren't met.
 - **Model Deployment:** Secure Dockerization, end-to-end CI/CD (GitHub Actions), image management via AWS ECR, and deployment onto AWS EC2 (optionally App Runner), integrated with strict network security controls.
 
-![Project Overview](Flow_Chart\Overview.png)
+![Project Overview](.\Flow_Chart\Overview.png)
 
 ---
 
