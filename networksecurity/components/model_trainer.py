@@ -38,11 +38,13 @@ class ModelTrainer:
             raise NetworkSecurityException(e,sys)
         
     def track_mlflow(self, best_model, Classificationmetric):
+        
         with mlflow.start_run():
             f1_score = Classificationmetric.f1_score
             precision_score = Classificationmetric.precision_score
             recall_score = Classificationmetric.recall_score
 
+            
             mlflow.log_metric("f1_score",f1_score)
             mlflow.log_metric("precision",precision_score)
             mlflow.log_metric("recall_score",recall_score)
@@ -113,8 +115,9 @@ class ModelTrainer:
         model_dir_path = os.path.dirname(self.model_trainer_config.trained_model_file_path)
         os.makedirs(model_dir_path, exist_ok=True)
 
-        Netwrok_model = NetworkModel(preprocessor=preprocessor, model=best_model)
-        save_object(self.model_trainer_config.trained_model_file_path, obj=NetworkModel)
+        Network_model = NetworkModel(preprocessor=preprocessor, model=best_model)
+        save_object(self.model_trainer_config.trained_model_file_path, obj = Network_model)
+        save_object("final_model/model.pkl", best_model)
 
         ## Model Trainer Artifact
         model_trainer_artifact=ModelTrainerArtifact(trained_model_file_path=self.model_trainer_config.trained_model_file_path,
